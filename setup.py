@@ -5,12 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="amobee-api-client",
-    version="0.1dev",
+    version="0.1.dev0",
     author="Matt Artingstall",
     author_email="matt@imagndesign.com",
     description="Simple wrapper for Amobee API",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
     url="https://github.com/martingstall/amobee-api-client",
     packages=setuptools.find_packages(),
     classifiers=[
