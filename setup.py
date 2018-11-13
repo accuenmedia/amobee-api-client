@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="amobee-api-client",
+    name="amobeeclient",
     version="0.1.dev0",
     author="Matt Artingstall",
     author_email="matt@imagndesign.com",
