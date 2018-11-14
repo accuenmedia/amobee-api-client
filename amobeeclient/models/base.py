@@ -10,14 +10,16 @@ class Base:
 
     def get(self, endpoint, payload=None):
         headers = {}
-
         headers['Content-Type'] = 'application/json'
         headers['Authorization'] = 'Bearer {0}'.format(self.connection.access_token)
+
+        print "headers"
+        print headers
 
         response = requests.get(
             {0},
             headers=headers,
-            data=payload,
+            data=json.dumps(payload),
             verify=False
         ).format(self.connection.url_metadata + endpoint)
         response = json.loads(response.text)

@@ -30,7 +30,7 @@ class Connection:
         response = requests.post(
             self.url_token,
             headers=headers,
-            data=data,
+            data=json.dumps(data),
             verify=False
         )
         response = json.loads(response.text)
