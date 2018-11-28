@@ -5,8 +5,6 @@ class Connection:
 
     access_token = None
     url_token = "https://services.amobee.com/accounts/v1/api/token"
-    url_metadata = "https://services.amobee.com/metadata/v2/api/"
-    url_reporting = "https://services.amobee.com/reporting/v2/api/"
 
     def __init__(self, client_id=None, client_secret=None, grant_type="client_credentials"):
         self.client_id = client_id
