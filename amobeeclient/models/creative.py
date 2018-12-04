@@ -4,9 +4,21 @@ import datetime
 
 from amobeeclient.models.base import Base
 
-class InsertionOrder(Base):
+class LineItem(Base):
 
-    object = "insertionorders"
+    object = "creatives"
+
+    def find_by_line_item(self, id):
+        url = "{0}/{1}?lineItemId={2}".format(self.url_metadata, self.object, id)
+        print "URL"
+        print url
+        response = requests.get(
+            url,
+            headers=self.api_headers(),
+            verify=False
+        )
+
+        return self.get_response_list(response)
 
     def find_by_advertiser(self, id):
         url = "{0}/{1}?advertiserId={2}".format(self.url_metadata, self.object, id)
