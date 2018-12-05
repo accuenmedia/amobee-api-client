@@ -4,14 +4,12 @@ import datetime
 
 from amobeeclient.models.base import Base
 
-class LineItem(Base):
+class Creative(Base):
 
     object = "creatives"
 
     def find_by_line_item(self, id):
         url = "{0}/{1}?lineItemId={2}".format(self.url_metadata, self.object, id)
-        print "URL"
-        print url
         response = requests.get(
             url,
             headers=self.api_headers(),
@@ -22,8 +20,6 @@ class LineItem(Base):
 
     def find_by_advertiser(self, id):
         url = "{0}/{1}?advertiserId={2}".format(self.url_metadata, self.object, id)
-        print "URL"
-        print url
         response = requests.get(
             url,
             headers=self.api_headers(),

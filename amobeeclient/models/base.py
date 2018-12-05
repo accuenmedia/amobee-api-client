@@ -12,8 +12,6 @@ class Base:
 
     def get_by_id(self, id):
         url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
-        print "URL"
-        print url
         response = requests.get(
             url,
             headers=self.api_headers(),
@@ -23,8 +21,6 @@ class Base:
 
     def list_objects(self, url_params=''):
         url = "{0}/{1}?{2}".format(self.url_metadata, self.object, url_params)
-        print "URL"
-        print url
         response = requests.get(
             url,
             headers=self.api_headers(),
