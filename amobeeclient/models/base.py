@@ -60,8 +60,8 @@ class Base:
             rval["request_body"] = ""
         else:
             rval["msg_type"] = "error"
-            rval["msg"] = data.get('message')
-            rval["data"] = data.get('errors')
+            rval["msg"] = data.get('error')
+            rval["data"] = data
             rval["request_body"] = ""
 
         return json.dumps(rval)
@@ -78,8 +78,8 @@ class Base:
             rval["request_body"] = ""
         else:
             rval["msg_type"] = "error"
-            rval["msg"] = data.get('message')
-            rval["data"] = data.get('errors')
+            rval["msg"] = data.get('error')
+            rval["data"] = data
             rval["request_body"] = ""
 
         return json.dumps(rval)
