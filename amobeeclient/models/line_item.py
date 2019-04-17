@@ -9,7 +9,7 @@ class LineItem(Base):
     object = "lineItems"
 
     def find_by_insertion_order(self, id):
-        url = "{0}/{1}/{2}/{3}".format(self.url_metadata, self.object, "insertionorder", id)
+        url = "{0}/{1}/?insertionOrderId={2}".format(self.url_metadata, self.object, id)
         response = requests.get(
             url,
             headers=self.api_headers(),
@@ -19,7 +19,7 @@ class LineItem(Base):
         return self.get_response_list(response)
 
     def find_by_package(self, id):
-        url = "{0}/{1}/{2}/{3}".format(self.url_metadata, self.object, "package", id)
+        url = "{0}/{1}/?packageId={2}".format(self.url_metadata, self.object, id)
         response = requests.get(
             url,
             headers=self.api_headers(),
