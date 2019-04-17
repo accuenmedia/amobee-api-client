@@ -6,7 +6,7 @@ from amobeeclient.models.base import Base
 
 class InsertionOrder(Base):
 
-    object = "insertionorders"
+    object = "insertionOrders"
 
     def find_by_advertiser(self, id):
         url = "{0}/{1}?advertiserId={2}".format(self.url_metadata, self.object, id)

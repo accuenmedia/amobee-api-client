@@ -4,7 +4,7 @@ import requests
 import datetime
 
 class Base:
-    url_metadata = "https://services.amobee.com/metadata/v2/api"
+    url_metadata = "https://services.amobee.com/campaign/v3/api"
     object = None
 
     def __init__(self, connection=None):

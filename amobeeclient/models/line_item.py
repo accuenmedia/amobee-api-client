@@ -6,7 +6,7 @@ from amobeeclient.models.base import Base
 
 class LineItem(Base):
 
-    object = "lineitems"
+    object = "lineItems"
 
     def find_by_insertion_order(self, id):
         url = "{0}/{1}/{2}/{3}".format(self.url_metadata, self.object, "insertionorder", id)
