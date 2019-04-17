@@ -56,11 +56,11 @@ class Base:
         if response.status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = ""
-            rval["data"] = data.get('items')
+            rval["data"] = data.get('data')
             rval["request_body"] = ""
         else:
             rval["msg_type"] = "error"
-            rval["msg"] = data.get('error')
+            rval["msg"] = data.get('errors')
             rval["data"] = data
             rval["request_body"] = ""
 
@@ -74,11 +74,11 @@ class Base:
         if response.status_code == 200:
             rval["msg_type"] = "success"
             rval["msg"] = ""
-            rval["data"] = data
+            rval["data"] = data.get('data')[0]
             rval["request_body"] = ""
         else:
             rval["msg_type"] = "error"
-            rval["msg"] = data.get('error')
+            rval["msg"] = data.get('errors')
             rval["data"] = data
             rval["request_body"] = ""
 
