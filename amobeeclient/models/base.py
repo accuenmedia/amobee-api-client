@@ -28,11 +28,7 @@ class Base:
         :return: JSON object
         """
         url = "{0}/{1}/{2}".format(self.url_metadata, self.object, id)
-        response = requests.get(
-            url,
-            headers=self.api_headers(),
-            verify=False
-        )
+        response = self.make_request("GET", url)
 
         return self.get_response_object(response)
 
@@ -43,11 +39,7 @@ class Base:
         :return: JSON array
         """
         url = "{0}/{1}?{2}".format(self.url_metadata, self.object, url_params)
-        response = requests.get(
-            url,
-            headers=self.api_headers(),
-            verify=False
-        )
+        response = self.make_request("GET", url)
 
         return self.get_response_list(response)
 
@@ -58,23 +50,19 @@ class Base:
         :return: JSON object
         """
         url = "{0}/{1}/".format(self.url_metadata, self.object)
-        response = requests.post(
-            url,
-            headers=self.api_headers(),
-            data=payload,
-            verify=False
-        )
+        response = self.make_request("POST", url, payload)
 
         return self.get_response_object(response)
 
-    def make_request(self, method, url):
+    def make_request(self, method, url, payload=None):
         """
 
-        :param method:
+        :param method: String
         :param url:
+        :param payload:
         :return: Response object
         """
-        headers = self.connection.authenticate()
+        headers = self.api_headers()
 
         if method == "GET":
             self.curl = "curl -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' '{1}'".format(
@@ -84,6 +72,32 @@ class Base:
             response = requests.get(
                 url,
                 headers=headers,
+                verify=False
+            )
+
+        elif method == "POST":
+            self.curl = "curl -XPOST -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' -d '{1}' '{2}'".format(
+                headers,
+                payload,
+                url
+            )
+            response = requests.post(
+                url,
+                headers=headers,
+                data=payload,
+                verify=False
+            )
+
+        elif method == "PUT":
+            self.curl = "curl -XPUT -H 'Content-Type: application/json' -H 'Authorization:Bearer {0}' -d '{1}' '{2}'".format(
+                headers,
+                payload,
+                url
+            )
+            response = requests.post(
+                url,
+                headers=headers,
+                data=payload,
                 verify=False
             )
 
