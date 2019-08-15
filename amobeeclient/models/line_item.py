@@ -9,21 +9,23 @@ class LineItem(Base):
     object = "lineItems"
 
     def find_by_insertion_order(self, id):
+        """
+
+        :param id:
+        :return: JSON array
+        """
         url = "{0}/{1}/?insertionOrderId={2}".format(self.url_metadata, self.object, id)
-        response = requests.get(
-            url,
-            headers=self.api_headers(),
-            verify=False
-        )
+        response = self.make_request("GET", url)
 
         return self.get_response_list(response)
 
     def find_by_package(self, id):
+        """
+
+        :param id:
+        :return: JSON array
+        """
         url = "{0}/{1}/?packageId={2}".format(self.url_metadata, self.object, id)
-        response = requests.get(
-            url,
-            headers=self.api_headers(),
-            verify=False
-        )
+        response = self.make_request("GET", url)
 
         return self.get_response_list(response)
