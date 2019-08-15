@@ -83,7 +83,7 @@ class Base:
             )
             response = requests.get(
                 url,
-                auth=headers,
+                headers=headers,
                 verify=False
             )
 
